@@ -10,7 +10,7 @@ import {
   voidInvoiceAction,
 } from "@/actions/invoices";
 import { PAYMENT_METHODS } from "@/lib/billing/rules";
-import { fieldClass, quietButtonClass } from "@/components/operations/styles";
+import { fieldClass, buttonClass, destructiveButtonClass } from "@/components/operations/styles";
 import { deliveryNotice } from "@/lib/email/status";
 import type { DeliveryOutcome } from "@/lib/email/dispatch";
 import type { ActionResult } from "@/lib/errors";
@@ -29,7 +29,7 @@ export function InvoiceControls({
   balanceDue: number;
 }) {
   return (
-    <div className="space-y-4 border border-zinc-200 bg-zinc-50 p-4">
+    <div className="document-actions">
       <div className="flex flex-wrap gap-2">
         {status === "draft" ? (
           <>
@@ -44,7 +44,7 @@ export function InvoiceControls({
       {status === "issued" || status === "partially_paid" ? (
         <PaymentForm invoiceId={invoiceId} balanceDue={balanceDue} />
       ) : null}
-      <p className="text-xs text-zinc-500">Recorded payments stay in the history. They cannot be edited or deleted here.</p>
+      {status !== "draft" ? <p className="w-full text-xs text-zinc-500">Recorded payments stay in the history. They cannot be edited or deleted here.</p> : null}
     </div>
   );
 }
@@ -83,7 +83,7 @@ function LifecycleButton({
       }
     >
       <input type="hidden" name="id" value={invoiceId} />
-      <button disabled={pending} className={quietButtonClass} type="submit">{label}</button>
+      <button disabled={pending} className={label === "Issue invoice" ? buttonClass : destructiveButtonClass} type="submit">{pending ? "Working…" : label}</button>
       {state && !state.ok ? <p className="text-sm text-red-700">{state.error.message}</p> : null}
       {state?.ok && state.data.email && state.data.email !== "skipped" ? (
         <p className="text-sm text-zinc-700">{deliveryNotice(state.data.email)}</p>
@@ -127,7 +127,7 @@ function PaymentForm({ invoiceId, balanceDue }: { invoiceId: string; balanceDue:
         <input name="notes" className={fieldClass} />
       </label>
       <div>
-        <button disabled={pending} className={quietButtonClass} type="submit">Record payment</button>
+        <button disabled={pending} className={buttonClass} type="submit">Record payment</button>
         {state && !state.ok ? <p className="mt-2 text-sm text-red-700">{state.error.message}</p> : null}
         {state?.ok && state.data.email && state.data.email !== "skipped" ? (
           <p className="mt-2 text-sm text-zinc-700">{deliveryNotice(state.data.email)}</p>

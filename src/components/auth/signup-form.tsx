@@ -58,7 +58,7 @@ export function SignupForm() {
       <button
         type="submit"
         disabled={pending}
-        className="w-full bg-zinc-900 px-3 py-2.5 text-sm font-medium text-white disabled:opacity-60"
+        className="w-full bg-[#17356b] px-3 py-2.5 text-sm font-medium text-white disabled:opacity-60"
       >
         {pending ? "Creating account…" : "Create account"}
       </button>

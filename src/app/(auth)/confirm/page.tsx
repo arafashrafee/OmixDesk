@@ -9,7 +9,7 @@ export default function ConfirmPage() {
     >
       <Link
         href="/login"
-        className="inline-flex bg-zinc-900 px-4 py-2.5 text-sm font-medium text-white"
+        className="inline-flex bg-[#17356b] px-4 py-2.5 text-sm font-medium text-white"
       >
         Go to sign in
       </Link>

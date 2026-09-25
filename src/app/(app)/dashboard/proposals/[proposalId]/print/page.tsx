@@ -32,7 +32,7 @@ export default async function PrintProposalPage({
       <style>{`
         @media print {
           @page { size: A4; margin: 16mm; }
-          header, nav, .proposal-controls { display: none !important; }
+          .workspace-topbar, .workspace-sidebar, .document-actions { display: none !important; }
           main { max-width: none !important; padding: 0 !important; }
           body { background: white !important; }
         }

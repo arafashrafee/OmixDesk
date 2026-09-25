@@ -88,7 +88,7 @@ export function ProposalDocument({ proposal }: { proposal: ProposalDocumentData 
         </section>
       ) : null}
 
-      <table className="mt-6 w-full border-collapse text-sm">
+      <div className="document-scroll" role="region" aria-label="Line items" tabIndex={0}><table className="mt-6 w-full border-collapse text-sm">
         <thead>
           <tr className="border-b border-zinc-300 text-left text-xs tracking-wide text-zinc-500 uppercase">
             <th className="py-2 font-medium">Item</th>
@@ -110,7 +110,7 @@ export function ProposalDocument({ proposal }: { proposal: ProposalDocumentData 
             </tr>
           ))}
         </tbody>
-      </table>
+      </table></div>
 
       <dl className="mt-4 ml-auto w-full max-w-xs space-y-1 text-sm">
         <div className="flex justify-between"><dt>Subtotal</dt><dd className="tabular-nums">{money(proposal.subtotal)}</dd></div>

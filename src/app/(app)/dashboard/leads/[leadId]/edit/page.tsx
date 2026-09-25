@@ -38,7 +38,7 @@ export default async function EditLeadPage({
 
   return (
     <div className="space-y-6">
-      <h1 className="text-xl font-semibold tracking-tight text-zinc-900">Edit lead</h1>
+      <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-900">Edit lead</h1>
       {lead.status === "won" ? (
         <p className="text-sm text-zinc-600">This lead is won. Status stays won.</p>
       ) : null}

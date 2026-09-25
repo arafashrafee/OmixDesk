@@ -14,20 +14,22 @@ export function BrandMark({
         alt="Omix Solutions"
         width={2000}
         height={1000}
-        priority={priority}
-        className="h-12 w-auto"
+        preload={priority}
+      unoptimized
+        className="h-16 w-auto object-contain"
       />
     );
   }
 
   return (
     <Image
-      src="/brand/omix-mark.jpg"
+      src="/brand/omix-mark.png"
       alt="Omix"
-      width={512}
-      height={512}
-      priority={priority}
-      className="h-9 w-9"
+      width={2000}
+      height={2000}
+      preload={priority}
+      unoptimized
+      className="h-11 w-11 object-contain"
     />
   );
 }

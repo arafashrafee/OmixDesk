@@ -30,11 +30,11 @@ export default async function ProposalsPage({
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl font-semibold tracking-tight text-zinc-900">Proposals</h1>
+          <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-900">Proposals</h1>
           <p className="mt-1 text-sm text-zinc-600">Quotations for leads and clients.</p>
         </div>
         {canWriteProposals(ctx.activeOrganization.role) ? (
-          <Link href="/dashboard/proposals/new" className="bg-zinc-900 px-3 py-2 text-sm font-medium text-white">
+          <Link href="/dashboard/proposals/new" className="bg-[#17356b] px-3 py-2 text-sm font-medium text-white">
             New proposal
           </Link>
         ) : null}
@@ -56,7 +56,7 @@ export default async function ProposalsPage({
       {!proposals.ok ? (
         <p className="text-sm text-red-700">Unable to load proposals.</p>
       ) : rows.length === 0 ? (
-        <p className="text-sm text-zinc-500">No proposals match.</p>
+        <p className="empty-state">No proposals match.</p>
       ) : (
         <div className="overflow-x-auto border border-zinc-200 bg-white">
           <table className="min-w-full text-left text-sm">
@@ -81,7 +81,7 @@ export default async function ProposalsPage({
                   </td>
                   <td className="px-3 py-3 text-zinc-600">
                     {proposal.recipient_name}
-                    <span className="text-zinc-400"> · {proposal.lead_id ? "Lead" : "Client"}</span>
+                    <span className="text-zinc-500"> · {proposal.lead_id ? "Lead" : "Client"}</span>
                   </td>
                   <td className="px-3 py-3 text-zinc-600">{proposal.title}</td>
                   <td className="px-3 py-3 text-zinc-600">{labelize(proposal.status)}</td>

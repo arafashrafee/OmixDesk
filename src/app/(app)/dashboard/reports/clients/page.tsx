@@ -32,7 +32,7 @@ export default async function ClientReportPage({
       pathname="/dashboard/reports/clients"
     >
       {!report ? <p className="text-sm text-red-700">Unable to load the client report.</p> : report.rows.length === 0 ? (
-        <p className="text-sm text-zinc-500">No clients.</p>
+        <p className="empty-state">No clients.</p>
       ) : (
         <div className="overflow-x-auto border border-zinc-200 bg-white">
           <table className="min-w-full text-left text-sm">

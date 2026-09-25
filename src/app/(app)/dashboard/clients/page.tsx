@@ -15,13 +15,13 @@ export default async function ClientsPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between gap-4">
+      <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl font-semibold tracking-tight text-zinc-900">Clients</h1>
+          <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-900">Clients</h1>
           <p className="mt-1 text-sm text-zinc-600">Organizations your team works for.</p>
         </div>
         {canWrite ? (
-          <Link href="/dashboard/clients/new" className="bg-zinc-900 px-3 py-2 text-sm font-medium text-white">
+          <Link href="/dashboard/clients/new" className="bg-[#17356b] px-3 py-2 text-sm font-medium text-white">
             New client
           </Link>
         ) : null}
@@ -29,7 +29,7 @@ export default async function ClientsPage() {
       {!clients.ok ? (
         <p className="text-sm text-red-700">Unable to load clients.</p>
       ) : clients.rows.length === 0 ? (
-        <p className="text-sm text-zinc-500">No clients yet.</p>
+        <p className="empty-state">No clients yet.</p>
       ) : (
         <div className="overflow-x-auto border border-zinc-200 bg-white">
           <table className="min-w-full text-left text-sm">

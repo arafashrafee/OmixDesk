@@ -9,7 +9,7 @@ export default async function PortalProfilePage() {
 
   return (
     <div className="space-y-4">
-      <h1 className="text-xl font-semibold tracking-tight text-zinc-900">Profile</h1>
+      <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-900">Profile</h1>
       <dl className="grid gap-4 border border-zinc-200 bg-white p-4 text-sm sm:grid-cols-2">
         <div>
           <dt className="text-xs tracking-wide text-zinc-500 uppercase">Signed in</dt>

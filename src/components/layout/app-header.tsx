@@ -1,6 +1,5 @@
-import Link from "next/link";
 import { signOutAction } from "@/actions/auth";
-import { BrandMark } from "@/components/brand/brand-mark";
+import { WorkspaceNav } from "@/components/layout/workspace-nav";
 import { NotificationBell, type NotificationItem } from "@/components/notifications/notification-bell";
 import { OrganizationSwitcher } from "@/components/organizations/organization-switcher";
 import { canReadReports } from "@/lib/rbac";
@@ -17,7 +16,7 @@ export function AppHeader({
   active: Membership;
   notifications: { unread: number; items: NotificationItem[] };
 }) {
-  const links = [
+  const links: Array<readonly [string, string]> = [
     ["/dashboard", "Dashboard"],
     ["/dashboard/leads", "Leads"],
     ["/dashboard/clients", "Clients"],
@@ -29,22 +28,11 @@ export function AppHeader({
   ];
 
   return (
-    <header className="border-b border-zinc-200 bg-white">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6">
-        <div className="flex min-w-0 items-center gap-3">
-          <Link href="/dashboard" className="flex items-center gap-2">
-            <BrandMark priority />
-            <span className="text-sm font-semibold tracking-tight text-zinc-900">OmixDesk</span>
-          </Link>
-          <nav className="hidden items-center gap-1 text-sm text-zinc-600 lg:flex">
-            {links.map(([href, label]) => (
-              <Link key={href} href={href} className="rounded-lg px-2.5 py-1.5 hover:bg-zinc-100 hover:text-zinc-900">
-                {label}
-              </Link>
-            ))}
-          </nav>
-        </div>
-        <div className="flex min-w-0 items-center gap-2">
+    <>
+      <WorkspaceNav links={links} />
+      <header className="workspace-topbar">
+        <div className="topbar-controls">
+
           <OrganizationSwitcher
             organizations={memberships.map((m) => ({
               organizationId: m.organizationId,
@@ -65,17 +53,7 @@ export function AppHeader({
             </button>
           </form>
         </div>
-        <details className="w-full lg:hidden">
-          <summary className="cursor-pointer list-none rounded-lg px-1 py-1 text-sm text-zinc-700">Menu</summary>
-          <nav className="mt-2 grid grid-cols-2 gap-1 text-sm">
-            {links.map(([href, label]) => (
-              <Link key={href} href={href} className="rounded-lg px-2.5 py-2 text-zinc-700 hover:bg-zinc-100">
-                {label}
-              </Link>
-            ))}
-          </nav>
-        </details>
-      </div>
-    </header>
+      </header>
+    </>
   );
 }

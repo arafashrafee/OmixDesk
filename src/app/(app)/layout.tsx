@@ -36,14 +36,14 @@ export default async function AppLayout({
   const notifications = await loadNotificationBell(active.organizationId, ctx.userId);
 
   return (
-    <div className="min-h-full bg-[#fafafa]">
+    <div className="workspace-shell">
       <AppHeader
         email={ctx.email}
         memberships={ctx.memberships}
         active={active}
         notifications={notifications}
       />
-      <main className="mx-auto max-w-6xl px-6 py-8">{children}</main>
+      <main id="main-content" className="workspace-main">{children}</main>
     </div>
   );
 }

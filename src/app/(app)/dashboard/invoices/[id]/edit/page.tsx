@@ -32,7 +32,7 @@ export default async function EditInvoicePage({
 
   return (
     <div className="space-y-6">
-      <h1 className="text-xl font-semibold tracking-tight text-zinc-900">Edit {invoice.invoice_number}</h1>
+      <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-900">Edit {invoice.invoice_number}</h1>
       <InvoiceForm
         invoice={{
           id: invoice.id,

@@ -10,9 +10,9 @@ export default async function PortalProposalsPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-xl font-semibold tracking-tight text-zinc-900">Proposals</h1>
+      <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-900">Proposals</h1>
       {proposals.length === 0 ? (
-        <p className="text-sm text-zinc-500">No proposals are available.</p>
+        <p className="empty-state">No proposals are available.</p>
       ) : (
         <ul className="divide-y divide-zinc-200 border border-zinc-200 bg-white">
           {proposals.map((proposal) => (

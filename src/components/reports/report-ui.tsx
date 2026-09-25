@@ -25,15 +25,16 @@ export function ReportShell({
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-xl font-semibold tracking-tight text-zinc-900">{title}</h1>
+        <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-900">{title}</h1>
         <p className="mt-1 text-sm text-zinc-600">{description}</p>
       </div>
-      <nav className="flex flex-wrap gap-3 text-sm">
+      <nav className="flex flex-wrap gap-2 border-b border-zinc-200 pb-3 text-sm">
         {LINKS.map(([href, label]) => (
           <Link
             key={href}
             href={`${href}?range=${window.preset}${window.preset === "custom" && window.start && window.end ? `&from=${window.start}&to=${window.end}` : ""}`}
-            className={pathname === href ? "font-medium text-zinc-900" : "text-zinc-500"}
+            aria-current={pathname === href ? "page" : undefined}
+            className={pathname === href ? "rounded-lg bg-white px-3 py-2 font-medium text-[#17356b] shadow-sm" : "px-3 py-2 text-zinc-600"}
           >
             {label}
           </Link>
@@ -61,7 +62,7 @@ function ReportFilters({ window }: { window: ReportWindow }) {
         <Link
           key={preset}
           href={`?range=${preset}`}
-          className={window.preset === preset ? "bg-zinc-900 px-3 py-2 text-white" : "border border-zinc-300 px-3 py-2"}
+          className={window.preset === preset ? "bg-[#17356b] px-3 py-2 text-white" : "border border-zinc-300 px-3 py-2"}
         >
           {label}
         </Link>
@@ -86,7 +87,7 @@ export function Kpi({ label, value, hint }: { label: string; value: string; hint
   return (
     <div className="border border-zinc-200 bg-white px-4 py-3">
       <p className="text-xs tracking-wide text-zinc-500 uppercase">{label}</p>
-      <p className="mt-1 text-lg font-medium text-zinc-900">{value}</p>
+      <p className="mt-2 text-3xl font-semibold text-zinc-900">{value}</p>
       {hint ? <p className="mt-1 text-xs text-zinc-500">{hint}</p> : null}
     </div>
   );
@@ -99,7 +100,7 @@ export function BarList({
 }) {
   const max = Math.max(1, ...rows.map((row) => row.count));
   if (rows.every((row) => row.count === 0)) {
-    return <p className="text-sm text-zinc-500">No data in this period.</p>;
+    return <p className="empty-state">No data in this period.</p>;
   }
   return (
     <ul className="space-y-2">
@@ -109,8 +110,8 @@ export function BarList({
             <span>{row.label}</span>
             <span className="tabular-nums">{row.count}</span>
           </div>
-          <div className="mt-1 h-2 bg-zinc-100">
-            <div className="h-2 bg-zinc-800" style={{ width: `${Math.round((row.count / max) * 100)}%` }} />
+          <div className="mt-1 h-2 rounded-full bg-zinc-100">
+            <div className="h-2 rounded-full bg-[#17356b]" style={{ width: `${Math.round((row.count / max) * 100)}%` }} />
           </div>
         </li>
       ))}

@@ -17,13 +17,13 @@ export default async function ProjectsPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between gap-4">
+      <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl font-semibold tracking-tight text-zinc-900">Projects</h1>
+          <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-900">Projects</h1>
           <p className="mt-1 text-sm text-zinc-600">Delivery work for the active organization.</p>
         </div>
         {canCreate ? (
-          <Link href="/dashboard/projects/new" className="bg-zinc-900 px-3 py-2 text-sm font-medium text-white">
+          <Link href="/dashboard/projects/new" className="bg-[#17356b] px-3 py-2 text-sm font-medium text-white">
             New project
           </Link>
         ) : null}
@@ -31,7 +31,7 @@ export default async function ProjectsPage() {
       {!projects.ok ? (
         <p className="text-sm text-red-700">Unable to load projects.</p>
       ) : projects.rows.length === 0 ? (
-        <p className="text-sm text-zinc-500">No projects yet.</p>
+        <p className="empty-state">No projects yet.</p>
       ) : (
         <div className="overflow-x-auto border border-zinc-200 bg-white">
           <table className="min-w-full text-left text-sm">

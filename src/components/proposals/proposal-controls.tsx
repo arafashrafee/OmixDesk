@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { deleteProposalAction, setProposalStatusAction } from "@/actions/proposals";
 import { convertLeadAction } from "@/actions/leads";
 import { confirmSubmit } from "@/components/ui/confirm-submit";
-import { quietButtonClass } from "@/components/operations/styles";
+import { quietButtonClass, buttonClass, destructiveButtonClass } from "@/components/operations/styles";
 import { deliveryNotice } from "@/lib/email/status";
 import type { DeliveryOutcome } from "@/lib/email/dispatch";
 import type { ProposalStatus } from "@/lib/proposals/rules";
@@ -32,7 +32,7 @@ export function ProposalControls({
   const options: ProposalStatus[] = ["sent", "accepted", "rejected", "expired", "draft"];
 
   return (
-    <div className="proposal-controls space-y-4 border border-zinc-200 bg-zinc-50 p-4">
+    <div className="document-actions">
       <div className="flex flex-wrap gap-2">
         {options.filter((next) => canTransitionProposal(status, next)).map((next) => (
           <StatusButton key={next} proposalId={proposalId} status={next} />
@@ -61,8 +61,8 @@ function StatusButton({ proposalId, status }: { proposalId: string; status: Prop
     <form action={action}>
       <input type="hidden" name="id" value={proposalId} />
       <input type="hidden" name="status" value={status} />
-      <button disabled={pending} className={quietButtonClass} type="submit">
-        Mark {status}
+      <button disabled={pending} className={status === "sent" || status === "accepted" ? buttonClass : quietButtonClass} type="submit">
+        {pending ? "Working…" : `Mark ${status}`}
       </button>
       {state && !state.ok ? <p className="text-sm text-red-700">{state.error.message}</p> : null}
       {state?.ok && state.data.email && state.data.email !== "skipped" ? (
@@ -104,7 +104,7 @@ function DeleteButton({ proposalId }: { proposalId: string }) {
   return (
     <form action={action} onSubmit={confirmSubmit("Delete this draft proposal? This cannot be undone.")}>
       <input type="hidden" name="id" value={proposalId} />
-      <button disabled={pending} className={quietButtonClass} type="submit">Delete draft</button>
+      <button disabled={pending} className={destructiveButtonClass} type="submit">Delete draft</button>
     </form>
   );
 }

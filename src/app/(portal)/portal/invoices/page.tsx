@@ -30,7 +30,7 @@ export default async function PortalInvoicesPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-xl font-semibold tracking-tight text-zinc-900">Invoices</h1>
+        <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-900">Invoices</h1>
         <p className="mt-1 text-sm text-zinc-600">
           Outstanding balances are collected by the organization. Online payment is not available.
         </p>
@@ -47,10 +47,10 @@ export default async function PortalInvoicesPage() {
           ))}
         </ul>
       ) : (
-        <p className="text-sm text-zinc-500">No outstanding balance.</p>
+        <p className="empty-state">No outstanding balance.</p>
       )}
       {invoices.length === 0 ? (
-        <p className="text-sm text-zinc-500">No invoices yet.</p>
+        <p className="empty-state">No invoices yet.</p>
       ) : (
         <ul className="divide-y divide-zinc-200 border border-zinc-200 bg-white">
           {invoices.map((invoice) => (

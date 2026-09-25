@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { Bell } from "lucide-react";
+import { useState, useRef } from "react";
 import { markAllNotificationsReadAction, markNotificationReadAction } from "@/actions/notifications";
 
 export type NotificationItem = {
@@ -23,17 +24,22 @@ export function NotificationBell({
   historyHref: string;
 }) {
   const [open, setOpen] = useState(false);
+  const trigger = useRef<HTMLButtonElement>(null);
   return (
-    <div className="relative">
+    <div className="relative" onKeyDown={(event) => { if (event.key === "Escape") { setOpen(false); trigger.current?.focus(); } }}>
       <button
+        ref={trigger}
+        aria-label={`Notifications${unread > 0 ? ` (${unread} unread)` : ""}`}
+        aria-expanded={open}
+        aria-controls="recent-notifications"
         type="button"
         className="border border-zinc-300 px-2.5 py-1.5 text-xs font-medium text-zinc-800"
         onClick={() => setOpen((value) => !value)}
       >
-        Notifications{unread > 0 ? ` (${unread})` : ""}
+        <span className="flex items-center gap-1"><Bell size={18} aria-hidden="true" />{unread > 0 ? <span>{unread}</span> : null}</span>
       </button>
       {open ? (
-        <div className="absolute right-0 z-20 mt-2 w-80 border border-zinc-200 bg-white p-3 shadow-sm">
+        <div id="recent-notifications" className="notification-popover" role="region" aria-label="Recent notifications">
           <div className="mb-2 flex items-center justify-between gap-2">
             <p className="text-xs tracking-wide text-zinc-500 uppercase">Recent</p>
             <form action={markAllNotificationsReadAction}>
@@ -41,7 +47,7 @@ export function NotificationBell({
             </form>
           </div>
           {items.length === 0 ? (
-            <p className="text-sm text-zinc-500">No notifications.</p>
+            <p className="empty-state">No notifications.</p>
           ) : (
             <ul className="space-y-2">
               {items.map((item) => (
@@ -50,7 +56,7 @@ export function NotificationBell({
                     {item.title}
                   </Link>
                   <p className="text-zinc-600">{item.message}</p>
-                  <p className="text-xs text-zinc-400">{new Date(item.created_at).toLocaleString()}</p>
+                  <p className="text-xs text-zinc-500">{new Date(item.created_at).toLocaleString()}</p>
                   {item.is_read ? null : (
                     <form action={markNotificationReadAction}>
                       <input type="hidden" name="id" value={item.id} />

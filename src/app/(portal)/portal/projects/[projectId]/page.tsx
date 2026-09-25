@@ -56,7 +56,7 @@ export default async function PortalProjectPage({
       ) : null}
       <section className="space-y-2">
         <h2 className="text-sm font-semibold text-zinc-900">Milestones</h2>
-        {milestones.length === 0 ? <p className="text-sm text-zinc-500">No milestones.</p> : (
+        {milestones.length === 0 ? <p className="empty-state">No milestones.</p> : (
           <ul className="divide-y divide-zinc-200 border border-zinc-200 bg-white">
             {milestones.map((milestone) => (
               <li key={milestone.id} className="px-4 py-3 text-sm">
@@ -69,7 +69,7 @@ export default async function PortalProjectPage({
       </section>
       <section className="space-y-2">
         <h2 className="text-sm font-semibold text-zinc-900">Shared tasks</h2>
-        {tasks.length === 0 ? <p className="text-sm text-zinc-500">No tasks have been shared.</p> : (
+        {tasks.length === 0 ? <p className="empty-state">No tasks have been shared.</p> : (
           <ul className="divide-y divide-zinc-200 border border-zinc-200 bg-white">
             {tasks.map((task) => (
               <li key={task.id} className="px-4 py-3 text-sm">

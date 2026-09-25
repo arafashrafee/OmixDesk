@@ -9,7 +9,12 @@ type AuthFormProps = {
 
 export function AuthShell({ title, subtitle, children }: AuthFormProps) {
   return (
-    <div className="mx-auto flex min-h-full w-full max-w-md flex-col justify-center px-6 py-16">
+    <div className="auth-shell">
+      <aside className="auth-intro">
+        <h2>A clear view of your agency.</h2>
+        <p>Keep your leads, clients, projects and billing together in one workspace.</p>
+      </aside>
+      <section className="auth-form" aria-label={title}>
       <div className="mb-10">
         <BrandMark variant="wordmark" priority />
         <p className="mt-3 text-sm text-zinc-600">OmixDesk by Omix Solutions</p>
@@ -19,6 +24,7 @@ export function AuthShell({ title, subtitle, children }: AuthFormProps) {
         <p className="mt-2 text-sm leading-6 text-zinc-600">{subtitle}</p>
       </div>
       {children}
+      </section>
     </div>
   );
 }

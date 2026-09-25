@@ -42,13 +42,13 @@ export default async function PortalHomePage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-xl font-semibold tracking-tight text-zinc-900">Overview</h1>
+        <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-900">Overview</h1>
         <p className="mt-1 text-sm text-zinc-600">Work and proposals shared with you.</p>
       </div>
       <section className="space-y-3">
         <h2 className="text-sm font-semibold text-zinc-900">Projects</h2>
         {projects.length === 0 ? (
-          <p className="text-sm text-zinc-500">No projects yet.</p>
+          <p className="empty-state">No projects yet.</p>
         ) : (
           <ul className="divide-y divide-zinc-200 border border-zinc-200 bg-white">
             {projects.map((project) => (
@@ -83,7 +83,7 @@ export default async function PortalHomePage() {
       <section className="space-y-3">
         <h2 className="text-sm font-semibold text-zinc-900">Invoices</h2>
         {billing.length === 0 ? (
-          <p className="text-sm text-zinc-500">No outstanding balance.</p>
+          <p className="empty-state">No outstanding balance.</p>
         ) : (
           <ul className="grid gap-3 sm:grid-cols-2">
             {billing.map((bucket) => (
@@ -117,7 +117,7 @@ export default async function PortalHomePage() {
       <section className="space-y-3">
         <h2 className="text-sm font-semibold text-zinc-900">Recent files</h2>
         {files.slice(0, 5).length === 0 ? (
-          <p className="text-sm text-zinc-500">No shared files.</p>
+          <p className="empty-state">No shared files.</p>
         ) : (
           <ul className="divide-y divide-zinc-200 border border-zinc-200 bg-white">
             {files.slice(0, 5).map((file) => (

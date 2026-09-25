@@ -60,7 +60,7 @@ export default async function ProjectReportPage({
           <section className="space-y-2">
             <h2 className="text-sm font-semibold">Open task workload</h2>
             <p className="text-xs text-zinc-500">Counts only. This is not a performance ranking.</p>
-            {report.workload.length === 0 ? <p className="text-sm text-zinc-500">No open tasks.</p> : (
+            {report.workload.length === 0 ? <p className="empty-state">No open tasks.</p> : (
               <BarList rows={report.workload.map((row) => ({ label: row.label, count: row.open_tasks }))} />
             )}
           </section>

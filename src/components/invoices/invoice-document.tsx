@@ -78,7 +78,7 @@ export function InvoiceDocument({ invoice }: { invoice: InvoiceDocumentData }) {
           <p className="text-zinc-600">Due {invoice.dueDate}</p>
         </div>
       </div>
-      <table className="mt-8 w-full text-left text-sm">
+      <div className="document-scroll" role="region" aria-label="Line items" tabIndex={0}><table className="mt-8 w-full text-left text-sm">
         <thead className="border-b border-zinc-300 text-xs tracking-wide text-zinc-500 uppercase">
           <tr>
             <th className="py-2 font-medium">Description</th>
@@ -97,7 +97,7 @@ export function InvoiceDocument({ invoice }: { invoice: InvoiceDocumentData }) {
             </tr>
           ))}
         </tbody>
-      </table>
+      </table></div>
       <dl className="mt-6 ml-auto w-full max-w-xs space-y-1 text-sm">
         <Row label="Subtotal" value={money(invoice.subtotal)} />
         <Row label="Discount" value={money(invoice.discountAmount)} />

@@ -38,7 +38,7 @@ export default async function PrintInvoicePage({
       <style>{`
         @media print {
           @page { size: A4; margin: 16mm; }
-          header, nav { display: none !important; }
+          .workspace-topbar, .workspace-sidebar { display: none !important; }
           main { max-width: none !important; padding: 0 !important; }
           body { background: white !important; }
         }

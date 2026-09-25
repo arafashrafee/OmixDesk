@@ -116,7 +116,7 @@ export default async function LeadDetailPage({
       <section className="space-y-3">
         <h2 className="text-base font-semibold text-zinc-900">Activity</h2>
         {activities.length === 0 ? (
-          <p className="text-sm text-zinc-500">No activity yet.</p>
+          <p className="empty-state">No activity yet.</p>
         ) : (
           <ol className="space-y-3">
             {activities.map((activity) => (

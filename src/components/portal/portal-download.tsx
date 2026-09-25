@@ -11,7 +11,7 @@ export function PortalDownload({
   files: Array<{ id: string; file_name: string; mime_type: string | null; size_bytes: number | null; created_at: string; context_name: string }>;
 }) {
   if (files.length === 0) {
-    return <p className="text-sm text-zinc-500">No shared files.</p>;
+    return <p className="empty-state">No shared files.</p>;
   }
   return (
     <ul className="divide-y divide-zinc-200 border border-zinc-200 bg-white">
@@ -60,7 +60,7 @@ export function ProposalResponse({ proposalId }: { proposalId: string }) {
       </label>
       {state && !state.ok ? <p className="text-sm text-red-700">{state.error.message}</p> : null}
       <div className="flex gap-2">
-        <button name="decision" value="accept" disabled={pending} className="bg-zinc-900 px-3 py-2 text-sm text-white">
+        <button name="decision" value="accept" disabled={pending} className="bg-[#17356b] px-3 py-2 text-sm text-white">
           Accept
         </button>
         <button name="decision" value="reject" disabled={pending} className={quietButtonClass}>

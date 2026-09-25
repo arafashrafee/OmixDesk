@@ -37,7 +37,7 @@ export default async function EditProposalPage({
 
   return (
     <div className="space-y-6">
-      <h1 className="text-xl font-semibold tracking-tight text-zinc-900">Edit {proposal.proposal_number}</h1>
+      <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-900">Edit {proposal.proposal_number}</h1>
       <ProposalForm
         leads={(leadList.ok ? leadList.rows : []).map((lead) => ({ id: lead.id, name: lead.name }))}
         clients={clientList.ok ? clientList.rows.map((client) => ({ id: client.id, name: client.name })) : []}

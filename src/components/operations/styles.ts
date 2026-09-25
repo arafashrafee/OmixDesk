@@ -22,3 +22,5 @@ export function statusClass(value: string): string {
 export function labelize(value: string): string {
   return value.replaceAll("_", " ");
 }
+
+export const destructiveButtonClass = "rounded-lg border border-red-200 bg-white px-3 py-2 text-sm font-medium text-red-700 hover:bg-red-50 disabled:opacity-60";

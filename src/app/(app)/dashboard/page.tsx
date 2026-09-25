@@ -32,7 +32,7 @@ export default async function DashboardPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-xl font-semibold tracking-tight text-zinc-900">
+        <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-900">
           Dashboard
         </h1>
         <p className="mt-1 text-sm text-zinc-600">
@@ -49,7 +49,7 @@ export default async function DashboardPage() {
           ) : null}
         </p>
       </div>
-      <dl className="grid gap-4 sm:grid-cols-3">
+      <dl className="dashboard-metrics grid gap-4 sm:grid-cols-3">
         <div className="border border-zinc-200 bg-white px-4 py-3">
           <dt className="text-xs tracking-wide text-zinc-500 uppercase">
             Active organization
@@ -93,12 +93,10 @@ export default async function DashboardPage() {
             <dt className="text-xs tracking-wide text-zinc-500 uppercase">
               Billing · {bucket.currency}
             </dt>
-            <dd className="mt-1 text-sm text-zinc-900">
-              {bucket.outstandingCount} outstanding · {bucket.outstandingAmount.toFixed(2)} due
-              {" · "}
-              {bucket.overdueAmount.toFixed(2)} overdue
-              {" · "}
-              {bucket.paymentsThisMonth.toFixed(2)} received this month
+            <dd className="mt-4 grid gap-5 sm:grid-cols-3">
+              <div><span className="text-sm text-zinc-600">Outstanding · {bucket.outstandingCount} invoices</span><p className="mt-1 text-2xl font-semibold tabular-nums">{bucket.outstandingAmount.toFixed(2)}</p></div>
+              <div><span className="text-sm text-zinc-600">Overdue</span><p className="mt-1 text-2xl font-semibold tabular-nums text-amber-800">{bucket.overdueAmount.toFixed(2)}</p></div>
+              <div><span className="text-sm text-zinc-600">Received this month</span><p className="mt-1 text-2xl font-semibold tabular-nums text-emerald-800">{bucket.paymentsThisMonth.toFixed(2)}</p></div>
             </dd>
           </div>
         ))}

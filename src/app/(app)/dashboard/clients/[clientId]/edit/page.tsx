@@ -25,7 +25,7 @@ export default async function EditClientPage({
 
   return (
     <div className="space-y-6">
-      <h1 className="text-xl font-semibold tracking-tight text-zinc-900">Edit client</h1>
+      <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-900">Edit client</h1>
       <ClientForm client={client} />
     </div>
   );

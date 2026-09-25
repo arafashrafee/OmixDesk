@@ -1,3 +1,4 @@
+import { statusClass } from "@/components/operations/styles";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { ProposalControls } from "@/components/proposals/proposal-controls";
@@ -39,8 +40,8 @@ export default async function ProposalDetailPage({
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <h1 className="text-xl font-semibold tracking-tight text-zinc-900">{proposal.proposal_number}</h1>
-        <div className="flex gap-2 text-sm">
+        <div><h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-900">{proposal.proposal_number}</h1><span className={statusClass(proposal.status)}>{proposal.status}</span><p className="mt-2 text-sm text-zinc-600">{proposal.title}</p></div>
+        <div className="flex flex-wrap gap-2 text-sm">
           {canWrite && proposal.status === "draft" ? (
             <Link href={`/dashboard/proposals/${proposal.id}/edit`} className="border border-zinc-300 px-3 py-2">
               Edit draft
@@ -70,10 +71,10 @@ export default async function ProposalDetailPage({
         <p className="text-sm text-zinc-600">Convert the lead to a client before creating an invoice.</p>
       ) : null}
       {proposal.internal_notes ? (
-        <section className="border border-zinc-200 bg-zinc-50 px-4 py-3">
-          <h2 className="text-xs tracking-wide text-zinc-500 uppercase">Internal notes</h2>
+        <details className="document-notes">
+          <summary>Internal notes · Staff only</summary>
           <p className="mt-1 whitespace-pre-wrap text-sm text-zinc-800">{proposal.internal_notes}</p>
-        </section>
+        </details>
       ) : null}
       <ProposalDocument
         proposal={{

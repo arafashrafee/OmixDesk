@@ -94,7 +94,7 @@ export function ProjectSections({
       <section id="milestones" className="space-y-4">
         <h2 className="text-base font-semibold text-zinc-900">Milestones</h2>
         {milestones.length === 0 ? (
-          <p className="text-sm text-zinc-500">No milestones yet.</p>
+          <p className="empty-state">No milestones yet.</p>
         ) : (
           <ul className="divide-y divide-zinc-200 border border-zinc-200 bg-white">
             {milestones.map((milestone) => (
@@ -127,7 +127,7 @@ export function ProjectSections({
       <section id="tasks" className="space-y-4">
         <h2 className="text-base font-semibold text-zinc-900">Tasks</h2>
         {tasks.length === 0 ? (
-          <p className="text-sm text-zinc-500">No tasks yet.</p>
+          <p className="empty-state">No tasks yet.</p>
         ) : (
           <ul className="divide-y divide-zinc-200 border border-zinc-200 bg-white">
             {tasks.map((task) => (
@@ -159,7 +159,7 @@ export function ProjectSections({
       <section id="team" className="space-y-4">
         <h2 className="text-base font-semibold text-zinc-900">Team</h2>
         {members.length === 0 ? (
-          <p className="text-sm text-zinc-500">No one is assigned yet.</p>
+          <p className="empty-state">No one is assigned yet.</p>
         ) : (
           <ul className="divide-y divide-zinc-200 border border-zinc-200 bg-white">
             {members.map((member) => (
@@ -501,7 +501,7 @@ export function FileRows({
   canWrite: boolean;
 }) {
   if (files.length === 0) {
-    return <p className="text-sm text-zinc-500">No files yet.</p>;
+    return <p className="empty-state">No files yet.</p>;
   }
   return (
     <ul className="divide-y divide-zinc-200 border border-zinc-200 bg-white">

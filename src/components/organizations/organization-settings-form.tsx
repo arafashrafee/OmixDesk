@@ -44,11 +44,9 @@ export function OrganizationSettingsForm({
   );
 
   return (
-    <div className="space-y-10">
-      <section className="space-y-4">
-        <h2 className="text-base font-semibold text-zinc-900">
-          Organization settings
-        </h2>
+    <div className="grid gap-6 xl:grid-cols-2">
+      <section className="space-y-4 rounded-2xl border border-zinc-200 bg-white p-6">
+        <h1 className="font-semibold text-zinc-900">Organization settings</h1>
         <form action={updateAction} className="max-w-lg space-y-4">
           <label className="block space-y-1.5">
             <span className="text-sm font-medium text-zinc-800">Name</span>
@@ -109,7 +107,7 @@ export function OrganizationSettingsForm({
             <button
               type="submit"
               disabled={updatePending}
-              className="bg-zinc-900 px-3 py-2 text-sm font-medium text-white disabled:opacity-60"
+              className="bg-[#17356b] px-3 py-2 text-sm font-medium text-white disabled:opacity-60"
             >
               {updatePending ? "Saving…" : "Save settings"}
             </button>
@@ -122,7 +120,7 @@ export function OrganizationSettingsForm({
       </section>
 
       {canInvite ? (
-        <section className="space-y-4">
+        <section className="space-y-4 rounded-2xl border border-zinc-200 bg-white p-6">
           <h2 className="text-base font-semibold text-zinc-900">
             Invite staff
           </h2>
@@ -163,7 +161,7 @@ export function OrganizationSettingsForm({
             <button
               type="submit"
               disabled={invitePending}
-              className="bg-zinc-900 px-3 py-2 text-sm font-medium text-white disabled:opacity-60"
+              className="bg-[#17356b] px-3 py-2 text-sm font-medium text-white disabled:opacity-60"
             >
               {invitePending ? "Creating…" : "Create invitation"}
             </button>

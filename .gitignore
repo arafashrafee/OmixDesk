@@ -38,3 +38,7 @@ next-env.d.ts
 
 # vercel
 .vercel
+
+# Local browser verification artifacts
+.playwright-cli/
+output/playwright/

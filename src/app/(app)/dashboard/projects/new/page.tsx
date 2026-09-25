@@ -22,7 +22,7 @@ export default async function NewProjectPage({
 
   return (
     <div className="space-y-6">
-      <h1 className="text-xl font-semibold tracking-tight text-zinc-900">New project</h1>
+      <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-900">New project</h1>
       {clients.length === 0 ? (
         <p className="text-sm text-zinc-600">Create a client before starting a project.</p>
       ) : null}

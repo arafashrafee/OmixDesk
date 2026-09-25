@@ -48,7 +48,7 @@ export default async function CrmReportPage({
           <section className="space-y-2">
             <h2 className="text-sm font-semibold">Sources</h2>
             <p className="text-xs text-zinc-500">Blank sources are shown as Unspecified. Different spellings stay separate. Conversion here is won count for that source, not a percentage.</p>
-            {report.sources.length === 0 ? <p className="text-sm text-zinc-500">No leads in this period.</p> : (
+            {report.sources.length === 0 ? <p className="empty-state">No leads in this period.</p> : (
               <table className="min-w-full text-left text-sm">
                 <thead className="text-xs text-zinc-500 uppercase"><tr><th className="py-2">Source</th><th>Leads</th><th>Won</th></tr></thead>
                 <tbody>
@@ -66,7 +66,7 @@ export default async function CrmReportPage({
           <section className="space-y-2">
             <h2 className="text-sm font-semibold">Lost reasons</h2>
             <p className="text-xs text-zinc-500">Exact stored text. Similar reasons are not merged.</p>
-            {report.lost_reasons.length === 0 ? <p className="text-sm text-zinc-500">No lost leads in this period.</p> : (
+            {report.lost_reasons.length === 0 ? <p className="empty-state">No lost leads in this period.</p> : (
               <BarList rows={report.lost_reasons.map((reason) => ({ label: reason.reason, count: reason.count }))} />
             )}
           </section>

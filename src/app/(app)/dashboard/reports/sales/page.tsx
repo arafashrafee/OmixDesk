@@ -78,7 +78,7 @@ export default async function SalesReportPage({
               }))}
             />
           </section>
-          {currencies.length === 0 ? <p className="text-sm text-zinc-500">No payment or invoice trend in this period.</p> : currencies.map((currency) => (
+          {currencies.length === 0 ? <p className="empty-state">No payment or invoice trend in this period.</p> : currencies.map((currency) => (
             <section key={currency} className="space-y-2">
               <h2 className="text-sm font-semibold">{currency} · {report.grain}</h2>
               <table className="text-sm">

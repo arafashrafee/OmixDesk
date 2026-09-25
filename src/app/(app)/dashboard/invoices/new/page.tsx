@@ -106,7 +106,7 @@ export default async function NewInvoicePage({
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-xl font-semibold tracking-tight text-zinc-900">New invoice</h1>
+        <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-900">New invoice</h1>
         <p className="mt-1 text-sm text-zinc-600">Saving creates a draft. Issue it when it is ready to share.</p>
       </div>
       {blocked ? <p className="text-sm text-zinc-700">{blocked}</p> : null}

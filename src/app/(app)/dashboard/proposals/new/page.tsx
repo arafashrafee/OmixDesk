@@ -30,7 +30,7 @@ export default async function NewProposalPage({
 
   return (
     <div className="space-y-6">
-      <h1 className="text-xl font-semibold tracking-tight text-zinc-900">New proposal</h1>
+      <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-900">New proposal</h1>
       <ProposalForm
         lockSource={Boolean(lead || client)}
         leads={(leadList.ok ? leadList.rows : []).map((row) => ({ id: row.id, name: row.name }))}

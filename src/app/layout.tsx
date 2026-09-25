@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: "OmixDesk",
   description: "OmixDesk by Omix Solutions. Client, project, proposal, and billing operations for an agency.",
   icons: {
-    icon: "/brand/omix-mark.jpg",
+    icon: "/brand/omix-mark.png",
   },
 };
 

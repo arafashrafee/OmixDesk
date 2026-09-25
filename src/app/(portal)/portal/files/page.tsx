@@ -9,7 +9,7 @@ export default async function PortalFilesPage() {
   const files = await loadPortalFiles(ctx.activeOrganization.organizationId);
   return (
     <div className="space-y-6">
-      <h1 className="text-xl font-semibold tracking-tight text-zinc-900">Files</h1>
+      <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-900">Files</h1>
       <PortalDownload files={files} />
     </div>
   );

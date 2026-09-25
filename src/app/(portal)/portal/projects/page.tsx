@@ -11,9 +11,9 @@ export default async function PortalProjectsPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-xl font-semibold tracking-tight text-zinc-900">Projects</h1>
+      <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-900">Projects</h1>
       {projects.length === 0 ? (
-        <p className="text-sm text-zinc-500">No projects have been shared.</p>
+        <p className="empty-state">No projects have been shared.</p>
       ) : (
         <ul className="divide-y divide-zinc-200 border border-zinc-200 bg-white">
           {projects.map((project) => (

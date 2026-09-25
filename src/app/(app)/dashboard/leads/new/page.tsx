@@ -17,7 +17,7 @@ export default async function NewLeadPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-xl font-semibold tracking-tight text-zinc-900">New lead</h1>
+      <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-900">New lead</h1>
       <LeadForm
         staff={staff.map((person) => ({ userId: person.userId, label: person.label }))}
         canAssign={canManageLeads(ctx.activeOrganization.role)}

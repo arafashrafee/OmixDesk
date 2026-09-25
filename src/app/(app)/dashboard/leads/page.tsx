@@ -60,11 +60,11 @@ export default async function LeadsPage({
     <div className="space-y-8">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl font-semibold tracking-tight text-zinc-900">Leads</h1>
+          <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-900">Leads</h1>
           <p className="mt-1 text-sm text-zinc-600">Open opportunities before they become clients.</p>
         </div>
         {canCreateLead(ctx.activeOrganization.role) ? (
-          <Link href="/dashboard/leads/new" className="bg-zinc-900 px-3 py-2 text-sm font-medium text-white">
+          <Link href="/dashboard/leads/new" className="bg-[#17356b] px-3 py-2 text-sm font-medium text-white">
             New lead
           </Link>
         ) : null}
@@ -86,7 +86,7 @@ export default async function LeadsPage({
                 </li>
               ))}
               {column.rows.length === 0 ? (
-                <li className="px-3 py-3 text-xs text-zinc-400">None</li>
+                <li className="px-3 py-3 text-xs text-zinc-500">None</li>
               ) : null}
             </ul>
           </div>
@@ -137,7 +137,7 @@ export default async function LeadsPage({
       {!leads.ok ? (
         <p className="text-sm text-red-700">Unable to load leads.</p>
       ) : rows.length === 0 ? (
-        <p className="text-sm text-zinc-500">No leads match.</p>
+        <p className="empty-state">No leads match.</p>
       ) : (
         <div className="overflow-x-auto border border-zinc-200 bg-white">
           <table className="min-w-full text-left text-sm">

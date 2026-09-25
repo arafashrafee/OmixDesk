@@ -31,7 +31,7 @@ export default async function EditProjectPage({
 
   return (
     <div className="space-y-6">
-      <h1 className="text-xl font-semibold tracking-tight text-zinc-900">Edit project</h1>
+      <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-900">Edit project</h1>
       <ProjectForm
         clients={clients}
         project={{

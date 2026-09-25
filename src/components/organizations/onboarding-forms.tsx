@@ -66,7 +66,7 @@ export function CreateOrganizationForm() {
       <button
         type="submit"
         disabled={pending}
-        className="bg-zinc-900 px-3 py-2.5 text-sm font-medium text-white disabled:opacity-60"
+        className="bg-[#17356b] px-3 py-2.5 text-sm font-medium text-white disabled:opacity-60"
       >
         {pending ? "Creating…" : "Create organization"}
       </button>
@@ -103,7 +103,7 @@ export function AcceptInvitationForm({ token }: { token: string }) {
       <button
         type="submit"
         disabled={pending}
-        className="bg-zinc-900 px-3 py-2.5 text-sm font-medium text-white disabled:opacity-60"
+        className="bg-[#17356b] px-3 py-2.5 text-sm font-medium text-white disabled:opacity-60"
       >
         {pending ? "Joining…" : "Accept invitation"}
       </button>

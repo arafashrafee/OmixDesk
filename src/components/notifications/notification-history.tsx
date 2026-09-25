@@ -16,8 +16,8 @@ export function NotificationHistory({
   const pages = Math.max(1, Math.ceil(total / pageSize));
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <h1 className="text-xl font-semibold tracking-tight text-zinc-900">Notifications</h1>
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-900">Notifications</h1>
         <form action={markAllNotificationsReadAction}>
           <button className="border border-zinc-300 px-3 py-2 text-sm" type="submit">
             Mark all read
@@ -25,16 +25,16 @@ export function NotificationHistory({
         </form>
       </div>
       {rows.length === 0 ? (
-        <p className="text-sm text-zinc-500">No notifications.</p>
+        <p className="empty-state">No notifications.</p>
       ) : (
-        <ul className="divide-y divide-zinc-200 border border-zinc-200 bg-white">
+        <ul className="overflow-hidden rounded-2xl divide-y divide-zinc-200 border border-zinc-200 bg-white">
           {rows.map((item) => (
-            <li key={item.id} className="space-y-1 px-4 py-3 text-sm">
+            <li key={item.id} className={`space-y-1 px-5 py-4 text-sm ${item.is_read ? "" : "border-l-4 border-l-[#17356b] bg-slate-50"}`}>
               <Link href={item.href} className={item.is_read ? "text-zinc-700" : "font-medium text-zinc-900"}>
                 {item.title}
               </Link>
               <p className="text-zinc-600">{item.message}</p>
-              <p className="text-xs text-zinc-400">{new Date(item.created_at).toLocaleString()}</p>
+              <p className="text-xs text-zinc-500">{new Date(item.created_at).toLocaleString()}</p>
               {item.is_read ? null : (
                 <form action={markNotificationReadAction}>
                   <input type="hidden" name="id" value={item.id} />
