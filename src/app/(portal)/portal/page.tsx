@@ -1,3 +1,6 @@
+import { ArrowUpRight, FolderKanban, FileCheck2, Files } from "lucide-react";
+import { PortalPanel } from "@/components/portal/portal-ui";
+import styles from "@/components/portal/portal-ui.module.css";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getAuthContext } from "@/lib/auth/session";
@@ -41,18 +44,24 @@ export default async function PortalHomePage() {
 
   return (
     <div className="space-y-8">
-      <div>
-        <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-900">Overview</h1>
-        <p className="mt-1 text-sm text-zinc-600">Work and proposals shared with you.</p>
+      <div className={styles.welcome}>
+        <div><h1>Your work, all in one place.</h1><p>Welcome to {ctx.activeOrganization.organizationName}. Follow your projects, review proposals and find everything shared with you.</p></div>
+        <Link href="/portal/projects">Explore projects <ArrowUpRight size={18} aria-hidden="true" /></Link>
       </div>
-      <section className="space-y-3">
-        <h2 className="text-sm font-semibold text-zinc-900">Projects</h2>
+      <dl className={styles.metrics}>
+        <div className={styles.metric}><span className={styles.icon}><FolderKanban size={21} aria-hidden="true" /></span><div><dt>Shared projects</dt><dd>{projects.length}</dd></div></div>
+        <div className={styles.metric}><span className={styles.icon}><FileCheck2 size={21} aria-hidden="true" /></span><div><dt>Proposals to review</dt><dd>{attention.length}</dd></div></div>
+        <div className={styles.metric}><span className={styles.icon}><Files size={21} aria-hidden="true" /></span><div><dt>Shared files</dt><dd>{files.length}</dd></div></div>
+      </dl>
+      <div className={styles.columns}>
+      <div className={styles.column}>
+      <PortalPanel title="Projects" href="/portal/projects">
         {projects.length === 0 ? (
           <p className="empty-state">No projects yet.</p>
         ) : (
           <ul className="divide-y divide-zinc-200 border border-zinc-200 bg-white">
             {projects.map((project) => (
-              <li key={project.id} className="flex items-center justify-between px-4 py-3 text-sm">
+              <li key={project.id} className="flex flex-wrap items-center justify-between gap-3 px-4 py-3 text-sm">
                 <Link href={`/portal/projects/${project.id}`} className="font-medium text-zinc-900">
                   {project.name}
                 </Link>
@@ -63,11 +72,10 @@ export default async function PortalHomePage() {
             ))}
           </ul>
         )}
-      </section>
-      <section className="space-y-3">
-        <h2 className="text-sm font-semibold text-zinc-900">Proposals needing a response</h2>
+      </PortalPanel>
+      <PortalPanel title="Proposals needing a response" href="/portal/proposals">
         {attention.length === 0 ? (
-          <p className="text-sm text-zinc-500">None waiting.</p>
+          <p className="text-sm text-zinc-500">You’re all caught up. No proposals are waiting for your response.</p>
         ) : (
           <ul className="divide-y divide-zinc-200 border border-zinc-200 bg-white">
             {attention.map((proposal) => (
@@ -79,9 +87,10 @@ export default async function PortalHomePage() {
             ))}
           </ul>
         )}
-      </section>
-      <section className="space-y-3">
-        <h2 className="text-sm font-semibold text-zinc-900">Invoices</h2>
+      </PortalPanel>
+      </div>
+      <div className={styles.column}>
+      <PortalPanel title="Invoices" href="/portal/invoices">
         {billing.length === 0 ? (
           <p className="empty-state">No outstanding balance.</p>
         ) : (
@@ -113,9 +122,8 @@ export default async function PortalHomePage() {
             ))}
           </ul>
         ) : null}
-      </section>
-      <section className="space-y-3">
-        <h2 className="text-sm font-semibold text-zinc-900">Recent files</h2>
+      </PortalPanel>
+      <PortalPanel title="Recent files" href="/portal/files">
         {files.slice(0, 5).length === 0 ? (
           <p className="empty-state">No shared files.</p>
         ) : (
@@ -128,7 +136,9 @@ export default async function PortalHomePage() {
             ))}
           </ul>
         )}
-      </section>
+      </PortalPanel>
+      </div>
+      </div>
     </div>
   );
 }

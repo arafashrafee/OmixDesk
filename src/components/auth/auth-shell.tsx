@@ -1,3 +1,4 @@
+import { Contact, FolderKanban, Receipt } from "lucide-react";
 import { type ReactNode } from "react";
 import { BrandMark } from "@/components/brand/brand-mark";
 
@@ -13,6 +14,11 @@ export function AuthShell({ title, subtitle, children }: AuthFormProps) {
       <aside className="auth-intro">
         <h2>A clear view of your agency.</h2>
         <p>Keep your leads, clients, projects and billing together in one workspace.</p>
+        <div className="auth-capabilities">
+          <div><Contact size={20} aria-hidden="true" /><span>Build client relationships</span></div>
+          <div><FolderKanban size={20} aria-hidden="true" /><span>Keep projects moving</span></div>
+          <div><Receipt size={20} aria-hidden="true" /><span>Bring clarity to billing</span></div>
+        </div>
       </aside>
       <section className="auth-form" aria-label={title}>
       <div className="mb-10">
